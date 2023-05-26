@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://modelos/cocodrilo.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://WomanModel.gd" type="Script" id=2]
+[ext_resource path="res://View.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="Cocodrilo" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 56.5216, 14.7758, -1.02597 )
+current = true
+
+[node name="CocodriloModel" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.776946, 0, 0, 0, 1, 0, -2.28195, 0 )
+script = ExtResource( 2 )
+
+[node name="CSGMesh" type="CSGMesh" parent="CocodriloModel"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128.36, -61.5515, 0 )
+mesh = ExtResource( 1 )
+
+[node name="Colition" type="CollisionShape" parent="CocodriloModel"]
+transform = Transform( 1.46156, 0, 0, 0, 1, 0, 0, 0, 1.5903, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="View" parent="." instance=ExtResource( 3 )]
